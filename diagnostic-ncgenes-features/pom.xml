@@ -2,13 +2,13 @@
   <parent>
     <groupId>org.renci.binning.workflows</groupId>
     <artifactId>diagnostic-ncgenes</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
   </parent>
   <name>Binning :: Workflow :: Diagnostic NCGenes :: Features</name>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.renci.binning.workflows.diagnostic-ncgenes</groupId>
   <artifactId>diagnostic-ncgenes-features</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3-SNAPSHOT</version>
   <packaging>pom</packaging>
   <build>
     <plugins>
