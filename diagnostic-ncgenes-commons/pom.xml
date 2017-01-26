@@ -2,13 +2,13 @@
   <parent>
     <groupId>org.renci.binning.workflows</groupId>
     <artifactId>diagnostic-ncgenes</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.3</version>
   </parent>
   <name>Binning :: Workflow :: Diagnostic NCGenes :: Commons</name>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.renci.binning.workflows.diagnostic-ncgenes</groupId>
   <artifactId>diagnostic-ncgenes-commons</artifactId>
-  <version>0.0.3-SNAPSHOT</version>
+  <version>0.0.3</version>
   <packaging>bundle</packaging>
   <dependencies>
     <dependency>
