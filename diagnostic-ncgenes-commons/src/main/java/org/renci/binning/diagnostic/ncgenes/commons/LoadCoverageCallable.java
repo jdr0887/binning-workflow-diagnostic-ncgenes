@@ -50,13 +50,14 @@ public class LoadCoverageCallable extends AbstractLoadCoverageCallable {
     @Override
     public File getDepthFile(String participant, Integer listVersion) throws BinningException {
         Map<String, String> avuMap = new HashMap<String, String>();
+        avuMap.put("ParticipantId", participant);
         avuMap.put("MaPSeqStudyName", "NC_GENES");
         avuMap.put("MaPSeqWorkflowName", "NCGenesBaseline");
         avuMap.put("MaPSeqWorkflowName", "NCGenesDX");
         avuMap.put("MaPSeqJobName", "GATKDepthOfCoverage");
         avuMap.put("MaPSeqMimeType", "TEXT_PLAIN");
         avuMap.put("DxVersion", listVersion.toString());
-        String irodsFile = IRODSUtils.findFile(participant, avuMap, ".sample_interval_summary");
+        String irodsFile = IRODSUtils.findFile(avuMap, ".sample_interval_summary");
         File depthFile = IRODSUtils.getFile(irodsFile, String.format("%s/Intervals", binningDirectory));
         logger.info("depth file: {}", depthFile.getAbsolutePath());
         return depthFile;
@@ -99,19 +100,20 @@ public class LoadCoverageCallable extends AbstractLoadCoverageCallable {
 
                 Map<String, String> avuMap = new HashMap<String, String>();
 
+                avuMap.put("ParticipantId", participant);
                 avuMap.put("MaPSeqStudyName", "NC_GENES");
                 avuMap.put("MaPSeqWorkflowName", "NCGenesBaseline");
 
                 // find/get bam
                 avuMap.put("MaPSeqJobName", "GATKTableRecalibration");
                 avuMap.put("MaPSeqMimeType", "APPLICATION_BAM");
-                String irodsFile = IRODSUtils.findFile(participant, avuMap);
+                String irodsFile = IRODSUtils.findFile(avuMap);
                 File bamFile = IRODSUtils.getFile(irodsFile, String.format("%s/Intervals", binningDirectory));
 
                 // find/get bai
                 avuMap.put("MaPSeqJobName", "SAMToolsIndex");
                 avuMap.put("MaPSeqMimeType", "APPLICATION_BAM_INDEX");
-                irodsFile = IRODSUtils.findFile(participant, avuMap);
+                irodsFile = IRODSUtils.findFile(avuMap);
                 IRODSUtils.getFile(irodsFile, String.format("%s/Intervals", binningDirectory));
 
                 File allMissingIntervalsFile = new File(
