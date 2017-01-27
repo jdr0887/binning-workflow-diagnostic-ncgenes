@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -32,17 +34,14 @@ public class LoadCoverageCallable extends AbstractLoadCoverageCallable {
 
     private static final Logger logger = LoggerFactory.getLogger(LoadCoverageCallable.class);
 
-    private String binningDirectory;
-
-    public LoadCoverageCallable(BinningDAOBeanService daoBean, DiagnosticBinningJob binningJob, String binningDirectory) {
+    public LoadCoverageCallable(BinningDAOBeanService daoBean, DiagnosticBinningJob binningJob) {
         super(daoBean, binningJob);
-        this.binningDirectory = binningDirectory;
     }
 
     @Override
     public File getAllIntervalsFile(Integer listVersion) {
         logger.debug("ENTERING getAllIntervalsFile(Integer)");
-        File ret = new File(String.format("%s/Intervals/allintervals.v%d.txt", binningDirectory, listVersion));
+        File ret = new File(String.format("$BINNING_INTERVALS_HOME/NCGenes/allintervals.v%d.txt", listVersion));
         logger.info("all intervals file: {}", ret.getAbsolutePath());
         return ret;
     }
@@ -58,8 +57,11 @@ public class LoadCoverageCallable extends AbstractLoadCoverageCallable {
         avuMap.put("MaPSeqMimeType", "TEXT_PLAIN");
         avuMap.put("DxVersion", listVersion.toString());
         String irodsFile = IRODSUtils.findFile(avuMap, ".sample_interval_summary");
-        File depthFile = IRODSUtils.getFile(irodsFile, String.format("%s/Intervals", binningDirectory));
-        logger.info("depth file: {}", depthFile.getAbsolutePath());
+        logger.info("irodsFile = {}", irodsFile);
+        Path participantPath = Paths.get(System.getProperty("karaf.data"), "tmp", "NC_GENES", participant);
+        participantPath.toFile().mkdirs();
+        File depthFile = IRODSUtils.getFile(irodsFile, participantPath.toString());
+        logger.info("depthFile: {}", depthFile.getAbsolutePath());
         return depthFile;
     }
 
@@ -108,16 +110,18 @@ public class LoadCoverageCallable extends AbstractLoadCoverageCallable {
                 avuMap.put("MaPSeqJobName", "GATKTableRecalibration");
                 avuMap.put("MaPSeqMimeType", "APPLICATION_BAM");
                 String irodsFile = IRODSUtils.findFile(avuMap);
-                File bamFile = IRODSUtils.getFile(irodsFile, String.format("%s/Intervals", binningDirectory));
+                Path participantPath = Paths.get(System.getProperty("karaf.data"), "tmp", "NC_GENES", participant);
+                participantPath.toFile().mkdirs();
+                File bamFile = IRODSUtils.getFile(irodsFile, participantPath.toString());
 
                 // find/get bai
                 avuMap.put("MaPSeqJobName", "SAMToolsIndex");
                 avuMap.put("MaPSeqMimeType", "APPLICATION_BAM_INDEX");
                 irodsFile = IRODSUtils.findFile(avuMap);
-                IRODSUtils.getFile(irodsFile, String.format("%s/Intervals", binningDirectory));
+                IRODSUtils.getFile(irodsFile, participantPath.toString());
 
                 File allMissingIntervalsFile = new File(
-                        String.format("%s/annotation/ncgenes/%s/allm.v%d.interval_list", binningDirectory, participant, listVersion));
+                        String.format("%s/allm.v%d.interval_list", participantPath.toString(), listVersion));
 
                 for (String missingInterval : missingIntervals) {
                     logger.debug("missingInterval: {}", missingInterval);
