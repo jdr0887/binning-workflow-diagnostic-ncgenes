@@ -50,6 +50,17 @@ public class LoadVCFCallable extends AbstractLoadVCFCallable {
     }
 
     @Override
+    public GenomeRef getGenomeRef() {
+        GenomeRef genomeRef = null;
+        try {
+            genomeRef = getDaoBean().getGenomeRefDAO().findById(2);
+        } catch (BinningDAOException e) {
+            e.printStackTrace();
+        }
+        return genomeRef;
+    }
+
+    @Override
     public LocatedVariant liftOver(LocatedVariant locatedVariant) throws BinningException {
         logger.debug("ENTERING liftOver(LocatedVariant)");
         LocatedVariant ret;
