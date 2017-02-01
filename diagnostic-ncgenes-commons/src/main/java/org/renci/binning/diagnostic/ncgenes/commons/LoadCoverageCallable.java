@@ -41,13 +41,15 @@ public class LoadCoverageCallable extends AbstractLoadCoverageCallable {
     @Override
     public File getAllIntervalsFile(Integer listVersion) {
         logger.debug("ENTERING getAllIntervalsFile(Integer)");
-        File ret = new File(String.format("$BINNING_INTERVALS_HOME/NCGenes/all/allintervals.v%d.txt", listVersion));
-        logger.info("all intervals file: {}", ret.getAbsolutePath());
-        return ret;
+        String binningIntervalsHome = System.getenv("BINNING_INTERVALS_HOME");
+        File allIntervalsFile = new File(String.format("%s/NCGenes/all/allintervals.v%d.txt", binningIntervalsHome, listVersion));
+        logger.info("all intervals file: {}", allIntervalsFile.getAbsolutePath());
+        return allIntervalsFile;
     }
 
     @Override
     public File getDepthFile(String participant, Integer listVersion) throws BinningException {
+        logger.debug("ENTERING getDepthFile(String, Integer)");
         Map<String, String> avuMap = new HashMap<String, String>();
         avuMap.put("ParticipantId", participant);
         avuMap.put("MaPSeqStudyName", "NC_GENES");
@@ -68,7 +70,7 @@ public class LoadCoverageCallable extends AbstractLoadCoverageCallable {
     @Override
     public void processIntervals(SortedSet<GATKDepthInterval> allIntervalSet, File depthFile, String participant, Integer listVersion)
             throws BinningException {
-
+        logger.debug("ENTERING processIntervals(SortedSet<GATKDepthInterval>, File, String, Integer)");
         try {
 
             List<String> existingIntervals = new ArrayList<>();
