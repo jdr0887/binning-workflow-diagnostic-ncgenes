@@ -1,0 +1,4 @@
+org.renci.binning.diagnostic.ncgenes.commands
+org.renci.binning.diagnostic.ncgenes.commons
+org.renci.binning.diagnostic.ncgenes.executor
+org.renci.binning.diagnostic.ncgenes.ws
