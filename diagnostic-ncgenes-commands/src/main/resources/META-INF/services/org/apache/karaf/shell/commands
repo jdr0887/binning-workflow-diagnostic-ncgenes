@@ -1,7 +1,0 @@
-org.renci.binning.diagnostic.ncgenes.commands.AnnotateVariantsAction
-org.renci.binning.diagnostic.ncgenes.commands.CreateBinningJobAction
-org.renci.binning.diagnostic.ncgenes.commands.GenerateReportAction
-org.renci.binning.diagnostic.ncgenes.commands.LoadCoverageAction
-org.renci.binning.diagnostic.ncgenes.commands.LoadVCFAction
-org.renci.binning.diagnostic.ncgenes.commands.UpdateDiagnosticBinsAction
-org.renci.binning.diagnostic.ncgenes.commands.UpdateFrequenciesAction
