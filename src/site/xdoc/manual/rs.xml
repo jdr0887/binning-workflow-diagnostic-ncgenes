@@ -1,0 +1,30 @@
+<document>
+  <properties>
+  </properties>
+  <body>
+    <section name="RESTful Services">
+      <subsection name="Submit (POST)">
+	<pre>http://&lt;host&gt;:&lt;port&gt;/cxf/DiagnosticNCGenes/DiagnosticNCGenesService/submit</pre>		
+	<p>The 'submit' service accepts a JSON string containing the
+	following keys:</p>
+	<ul>
+	  <li>participant</li>
+	  <li>gender</li>
+	  <li>dxId</li>
+	  <li>listVersion</li>	  
+	</ul>
+	<p>For example:</p>
+	<pre>{"diagnosticBinningJobInfo":{"participant":"test","gender":"M","dxId":46,"listVersion":40}}</pre>
+	<p>The response will include the binning job identifier as a long.</p>
+      </subsection>
+      <subsection name="Lookup Status (GET)">
+	<pre>http://&lt;host&gt;:&lt;port&gt;/cxf/DiagnosticNCGenes/DiagnosticNCGenesService/status/{binningJobId}</pre>
+	<p>The response will be a deserialization of a
+	DiagnosticStatusType object.  The reponse format can be
+	rendered as xml or json (defaults to xml).  For example:</p>
+	<pre>http://&lt;host&gt;:&lt;port&gt;/cxf/DiagnosticNCGenes/DiagnosticNCGenesService/status/1234.xml
+http://&lt;host&gt;:&lt;port&gt;/cxf/DiagnosticNCGenes/DiagnosticNCGenesService/status/1234.json</pre>
+      </subsection>          
+    </section>
+  </body>
+</document>

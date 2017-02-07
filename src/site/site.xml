@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Diagnostic NCGenes">
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>1.5</version>
+  </skin>
+  <custom>
+    <fluidoSkin>
+      <sideBarEnabled>true</sideBarEnabled>
+    </fluidoSkin>
+  </custom>
+  <bannerLeft>
+    <name>${project.name}</name>
+  </bannerLeft>
+  <body>
+    <menu name="Overview">
+      <item name="About" href="index.html"/>
+    </menu>
+    <menu name="Manual">
+      <item name="Building" href="manual/building.html"/>
+      <item name="Workflow" href="manual/workflow.html"/>
+      <item name="RESTful Services" href="manual/rs.html"/>      
+      <item name="Commands" href="manual/commands.html"/>            
+    </menu>    
+    <menu ref="reports"/>
+  </body>
+</project>

@@ -1,0 +1,47 @@
+<document>
+  <properties>
+  </properties>
+  <body>
+    <section name="Commands">
+      <p>The binning commands can help with testing or out-of-band processing.</p>
+      <subsection name="List Jobs">	
+	<p></p>
+	<pre>
+ID       Participant        Study                Gender   DX       ListVersion    Assembly       Status                     Start                  Stop                   VCF
+47       OPH_00206          NCGENES Study        F        15       16                            Complete                   7/12/13 9:24 AM        7/12/13 6:37 PM        /proj/renci/sequence_analysis/ncgenes/OPH_00206/130522_UNC11-SN627_0299_AD25TUACXX_TGACCA_L003.fixed-rg.deduped.realign.fixmate.recal.variant.recalibrated.filtered.vcf
+50       NCG_00192          NCGENES Study        F        1        16                            Complete                   7/15/13 9:59 AM        7/15/13 4:47 PM        /proj/renci/sequence_analysis/ncgenes/NCG_00192/130114_UNC17-SN7001277_0067_BH093GADXX_ACTTGA_L001.fixed-rg.deduped.realign.fixmate.recal.variant.recalibrated.filtered.vcf
+51       NCG_00223          NCGENES Study        M        22       16                            Complete                   7/15/13 9:59 AM        7/15/13 4:47 PM        /proj/renci/sequence_analysis/ncgenes/NCG_00223/130522_UNC11-SN627_0299_AD25TUACXX_AAAGCA_L004.fixed-rg.deduped.realign.fixmate.recal.variant.recalibrated.filtered.vcf
+52       NCG_00106          NCGENES Study        F        10       16                            Complete                   7/15/13 11:20 AM       7/15/13 4:47 PM        /proj/renci/sequence_analysis/ncgenes/NCG_00106/130522_UNC11-SN627_0299_AD25TUACXX_CAGATC_L002.fixed-rg.deduped.realign.fixmate.recal.variant.recalibrated.filtered.vcf</pre>
+      </subsection>
+      <subsection name="Create Job">
+	<p>The create binning job will take the arguments and persist a DiagnosticBinningJob with a 'NCGENES' study &amp; return the identifier.</p>
+	<pre>karaf@root()> diagnostic-ncgenes:create-binning-job --gender M --participant NCG_00020 --listVersion 22 --dxId 7
+4246</pre>	
+      </subsection>
+      <subsection name="Load VCF">
+	<p>Persist variants from a vcf file...skipping homozygous reference calls.</p>
+	<pre>karaf@root()> diagnostic-ncgenes:load-vcf --binningJobId 4246</pre>			
+      </subsection>      
+      <subsection name="Annotate Variants">
+	<p>Annotating a LocatedVariant involves determining the transcript location &amp; adding HGVS expressions.</p>
+	<pre>karaf@root()> diagnostic-ncgenes:annotate-variants --binningJobId 4246</pre>				
+      </subsection>
+      <subsection name="Load Coverage">
+	<p>Coverage can be from a GATKDepthOfCoverage summary file or from a SAMToolsDepth file.</p>
+	<pre>karaf@root()> diagnostic-ncgenes:load-coverage --binningJobId 4246</pre>					
+      </subsection>
+      <subsection name="Update Frequencies">
+	<p>Updating the MaxFrequency table to based on information from 1000Genome, ExAC, or dbSNP.</p>
+	<pre>karaf@root()> diagnostic-ncgenes:update-frequencies --binningJobId 4246</pre>						
+      </subsection>
+      <subsection name="Update Diagnostic Bins">
+	<p>Do the actual binning using MaxFrequency, HGMD, and/or ClinVar metadata.</p>
+	<pre>karaf@root()> diagnostic-ncgenes:update-diagnostic-bins --binningJobId 4246</pre>							
+      </subsection>
+      <subsection name="Generate Report">
+	<p>Persists counts from tables involved in running the binning process (ie, # of snps processed, # of HGDM known pathogenic variants, etc.).</p>
+	<pre>karaf@root()> diagnostic-ncgenes:generate-report --binningJobId 4246</pre>							
+      </subsection>                  
+    </section>
+  </body>
+</document>
