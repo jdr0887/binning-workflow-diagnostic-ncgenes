@@ -2,7 +2,7 @@
   <parent>
     <groupId>org.renci.binning</groupId>
     <artifactId>binning</artifactId>
-    <version>0.0.33</version>
+    <version>0.0.34</version>
   </parent>
   <name>Binning :: Workflow :: Diagnostic NCGenes</name>
   <modelVersion>4.0.0</modelVersion>
@@ -10,6 +10,9 @@
   <artifactId>diagnostic-ncgenes</artifactId>
   <version>0.0.14-SNAPSHOT</version>
   <packaging>pom</packaging>
+  <properties>
+    <maven.site.plugin.skip>false</maven.site.plugin.skip>    
+  </properties>        
   <issueManagement>
     <system>GitHub Issues</system>
     <url>https://github.com/jdr0887/binning-workflow-diagnostic-ncgenes/issues</url>

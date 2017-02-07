@@ -10,6 +10,9 @@
   <artifactId>diagnostic-ncgenes-executor</artifactId>
   <version>0.0.14-SNAPSHOT</version>
   <packaging>bundle</packaging>
+  <properties>
+    <maven.site.plugin.skip>true</maven.site.plugin.skip>    
+  </properties>        
   <dependencies>
     <dependency>
       <groupId>org.renci.binning.workflows.diagnostic-ncgenes</groupId>
