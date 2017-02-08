@@ -1,0 +1,36 @@
+<document>
+  <properties>
+  </properties>
+  <body>
+    <section name="Deployment">
+      <p>The binning project is an OSGi based project distributed as a
+      custom Karaf distribution.  As such, provisioning bundles, or
+      collection of bundles, to an installation is available.  Each
+      plugin has a 'features' module that details the dependent
+      bundles for a binning workflow.</p>
+      <subsection name="Installing a feature">
+	<p>First thing to do is to ssh into the Karaf container.
+	Something like 'ssh -p 8101 -l karaf localhost' should do the
+	trick if you already have system level machine access &amp;
+	the Karaf server is running.  Once in, you will have a prompt
+	to execute a number of Karaf commands.  Here are a few
+	commands to review the installation state:</p>
+	<pre>karaf@root()> feature:list
+karaf@root()> feature:repo-list</pre>
+        <p>To add the diagnostic-ncgenes feature repository:</p>
+	<pre>karaf@root()> feature:repo-add mvn:org.renci.binning.workflows.diagnostic-ncgenes/diagnostic-ncgenes-features/&lt;version&gt;/xml/features</pre>
+        <p>To remove the diagnostic-ncgenes feature repository:</p>
+	<pre>karaf@root()> feature:repo-remove mvn:org.renci.binning.workflows.diagnostic-ncgenes/diagnostic-ncgenes-features/&lt;version&gt;/xml/features</pre>
+        <p>To install the diagnostic-ncgenes feature:</p>
+	<pre>karaf@root()> feature:install diagnostic-ncgenes</pre>
+        <p>To uninstall the diagnostic-ncgenes feature:</p>
+	<pre>karaf@root()> feature:uninstall diagnostic-ncgenes</pre>
+        <p>This paradigm allows for iterative development on binning plugins/workflows.</p>
+	<pre>karaf@root()> feature:uninstall diagnostic-ncgenes
+karaf@root()> feature:repo-remove mvn:org.renci.binning.workflows.diagnostic-ncgenes/diagnostic-ncgenes-features/&lt;current-version&gt;/xml/features
+karaf@root()> feature:repo-add mvn:org.renci.binning.workflows.diagnostic-ncgenes/diagnostic-ncgenes-features/&lt;next-version&gt;/xml/features
+karaf@root()> feature:install diagnostic-ncgenes</pre>				
+      </subsection>
+    </section>
+  </body>
+</document>
