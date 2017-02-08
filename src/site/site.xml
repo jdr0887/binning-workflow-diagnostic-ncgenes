@@ -21,7 +21,8 @@
       <item name="Building" href="manual/building.html"/>
       <item name="Workflow" href="manual/workflow.html"/>
       <item name="RESTful Services" href="manual/rs.html"/>      
-      <item name="Commands" href="manual/commands.html"/>            
+      <item name="Commands" href="manual/commands.html"/>
+      <item name="Deployment" href="manual/deployment.html"/>      
     </menu>    
     <menu ref="reports"/>
   </body>
