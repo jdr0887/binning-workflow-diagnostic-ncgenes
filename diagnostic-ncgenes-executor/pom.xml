@@ -2,13 +2,13 @@
   <parent>
     <groupId>org.renci.binning.workflows</groupId>
     <artifactId>diagnostic-ncgenes</artifactId>
-    <version>0.0.14-SNAPSHOT</version>
+    <version>0.0.14</version>
   </parent>
   <name>Binning :: Workflow :: Diagnostic NCGenes :: Executor</name>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.renci.binning.workflows.diagnostic-ncgenes</groupId>
   <artifactId>diagnostic-ncgenes-executor</artifactId>
-  <version>0.0.14-SNAPSHOT</version>
+  <version>0.0.14</version>
   <packaging>bundle</packaging>
   <properties>
     <maven.site.plugin.skip>true</maven.site.plugin.skip>    
