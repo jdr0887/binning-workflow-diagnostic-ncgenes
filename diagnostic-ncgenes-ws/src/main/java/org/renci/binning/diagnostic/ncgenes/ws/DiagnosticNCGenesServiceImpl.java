@@ -7,12 +7,12 @@ import javax.ws.rs.core.Response;
 import org.apache.commons.collections4.CollectionUtils;
 import org.renci.binning.core.BinningExecutorService;
 import org.renci.binning.core.diagnostic.DiagnosticBinningJobInfo;
-import org.renci.binning.dao.BinningDAOBeanService;
-import org.renci.binning.dao.BinningDAOException;
-import org.renci.binning.dao.clinbin.model.DX;
-import org.renci.binning.dao.clinbin.model.DiagnosticBinningJob;
-import org.renci.binning.dao.clinbin.model.DiagnosticStatusType;
 import org.renci.binning.diagnostic.ncgenes.executor.DiagnosticNCGenesTask;
+import org.renci.canvas.dao.CANVASDAOBeanService;
+import org.renci.canvas.dao.CANVASDAOException;
+import org.renci.canvas.dao.clinbin.model.DX;
+import org.renci.canvas.dao.clinbin.model.DiagnosticBinningJob;
+import org.renci.canvas.dao.clinbin.model.DiagnosticStatusType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +20,7 @@ public class DiagnosticNCGenesServiceImpl implements DiagnosticNCGenesService {
 
     private static final Logger logger = LoggerFactory.getLogger(DiagnosticNCGenesServiceImpl.class);
 
-    private BinningDAOBeanService binningDAOBeanService;
+    private CANVASDAOBeanService daoBeanService;
 
     private BinningExecutorService binningExecutorService;
 
@@ -38,21 +38,21 @@ public class DiagnosticNCGenesServiceImpl implements DiagnosticNCGenesService {
             binningJob.setGender(info.getGender());
             binningJob.setParticipant(info.getParticipant());
             binningJob.setListVersion(info.getListVersion());
-            binningJob.setStatus(binningDAOBeanService.getDiagnosticStatusTypeDAO().findById("Requested"));
-            DX dx = binningDAOBeanService.getDXDAO().findById(info.getDxId());
+            binningJob.setStatus(daoBeanService.getDiagnosticStatusTypeDAO().findById("Requested"));
+            DX dx = daoBeanService.getDXDAO().findById(info.getDxId());
             binningJob.setDx(dx);
-            List<DiagnosticBinningJob> foundBinningJobs = binningDAOBeanService.getDiagnosticBinningJobDAO().findByExample(binningJob);
+            List<DiagnosticBinningJob> foundBinningJobs = daoBeanService.getDiagnosticBinningJobDAO().findByExample(binningJob);
             if (CollectionUtils.isNotEmpty(foundBinningJobs)) {
                 binningJob = foundBinningJobs.get(0);
             } else {
-                binningJob.setId(binningDAOBeanService.getDiagnosticBinningJobDAO().save(binningJob));
+                binningJob.setId(daoBeanService.getDiagnosticBinningJobDAO().save(binningJob));
             }
             info.setId(binningJob.getId());
             logger.info(binningJob.toString());
 
             binningExecutorService.getExecutor().submit(new DiagnosticNCGenesTask(binningJob.getId()));
 
-        } catch (BinningDAOException e) {
+        } catch (CANVASDAOException e) {
             logger.error(e.getMessage(), e);
             return Response.serverError().build();
         }
@@ -63,10 +63,10 @@ public class DiagnosticNCGenesServiceImpl implements DiagnosticNCGenesService {
     public DiagnosticStatusType status(Integer binningJobId) {
         logger.debug("ENTERING status(Integer)");
         try {
-            DiagnosticBinningJob foundBinningJob = binningDAOBeanService.getDiagnosticBinningJobDAO().findById(binningJobId);
+            DiagnosticBinningJob foundBinningJob = daoBeanService.getDiagnosticBinningJobDAO().findById(binningJobId);
             logger.info(foundBinningJob.toString());
             return foundBinningJob.getStatus();
-        } catch (BinningDAOException e) {
+        } catch (CANVASDAOException e) {
             e.printStackTrace();
         }
         return null;
@@ -80,12 +80,12 @@ public class DiagnosticNCGenesServiceImpl implements DiagnosticNCGenesService {
         this.binningExecutorService = binningExecutorService;
     }
 
-    public BinningDAOBeanService getBinningDAOBeanService() {
-        return binningDAOBeanService;
+    public CANVASDAOBeanService getDaoBeanService() {
+        return daoBeanService;
     }
 
-    public void setBinningDAOBeanService(BinningDAOBeanService binningDAOBeanService) {
-        this.binningDAOBeanService = binningDAOBeanService;
+    public void setDaoBeanService(CANVASDAOBeanService daoBeanService) {
+        this.daoBeanService = daoBeanService;
     }
 
 }

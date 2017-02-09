@@ -21,8 +21,8 @@ import org.renci.binning.core.BinningException;
 import org.renci.binning.core.GATKDepthInterval;
 import org.renci.binning.core.IRODSUtils;
 import org.renci.binning.core.diagnostic.AbstractLoadCoverageCallable;
-import org.renci.binning.dao.BinningDAOBeanService;
-import org.renci.binning.dao.clinbin.model.DiagnosticBinningJob;
+import org.renci.canvas.dao.CANVASDAOBeanService;
+import org.renci.canvas.dao.clinbin.model.DiagnosticBinningJob;
 import org.renci.common.exec.BashExecutor;
 import org.renci.common.exec.CommandInput;
 import org.renci.common.exec.CommandOutput;
@@ -34,7 +34,7 @@ public class LoadCoverageCallable extends AbstractLoadCoverageCallable {
 
     private static final Logger logger = LoggerFactory.getLogger(LoadCoverageCallable.class);
 
-    public LoadCoverageCallable(BinningDAOBeanService daoBean, DiagnosticBinningJob binningJob) {
+    public LoadCoverageCallable(CANVASDAOBeanService daoBean, DiagnosticBinningJob binningJob) {
         super(daoBean, binningJob);
     }
 
