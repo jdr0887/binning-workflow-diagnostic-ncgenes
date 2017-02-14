@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <groupId>org.renci.binning</groupId>
+    <groupId>org.renci.canvas</groupId>
     <artifactId>binning</artifactId>
-    <version>0.0.35</version>
+    <version>0.0.38</version>
   </parent>
-  <name>Binning :: Workflow :: Diagnostic NCGenes</name>
+  <name>CANVAS :: Binning :: Diagnostic NCGenes Workflow</name>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.renci.binning.workflows</groupId>
-  <artifactId>diagnostic-ncgenes</artifactId>
+  <groupId>org.renci.canvas.binning</groupId>
+  <artifactId>diagnostic-ncgenes-workflow</artifactId>
   <version>0.0.15-SNAPSHOT</version>
   <packaging>pom</packaging>
   <properties>
@@ -33,22 +33,22 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-	<groupId>org.renci.binning.workflows.diagnostic-ncgenes</groupId>
-	<artifactId>diagnostic-ncgenes-commons</artifactId>
+	<groupId>org.renci.canvas.binning.diagnostic-ncgenes-workflow</groupId>
+	<artifactId>diagnostic-ncgenes-workflow-commons</artifactId>
 	<version>0.0.15-SNAPSHOT</version>
       </dependency>
       <dependency>
-	<groupId>org.renci.binning.workflows.diagnostic-ncgenes</groupId>
-	<artifactId>diagnostic-ncgenes-executor</artifactId>
+	<groupId>org.renci.canvas.binning.diagnostic-ncgenes-workflow</groupId>
+	<artifactId>diagnostic-ncgenes-workflow-executor</artifactId>
 	<version>0.0.15-SNAPSHOT</version>
       </dependency>      
     </dependencies>
   </dependencyManagement>  
   <modules>
-    <module>diagnostic-ncgenes-features</module>
-    <module>diagnostic-ncgenes-commands</module>
-    <module>diagnostic-ncgenes-executor</module>
-    <module>diagnostic-ncgenes-commons</module>
-    <module>diagnostic-ncgenes-ws</module>        
+    <module>diagnostic-ncgenes-workflow-features</module>
+    <module>diagnostic-ncgenes-workflow-commands</module>
+    <module>diagnostic-ncgenes-workflow-executor</module>
+    <module>diagnostic-ncgenes-workflow-commons</module>
+    <module>diagnostic-ncgenes-workflow-ws</module>        
   </modules>
 </project>
