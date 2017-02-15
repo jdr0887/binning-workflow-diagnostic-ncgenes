@@ -5,14 +5,14 @@
   <process id="ncgenes_diagnostic_binning" name="NCGenesDiagnosticBinning">
 
     <startEvent id="start" />
-    <serviceTask id="initialize" activiti:class="org.renci.binning.core.diagnostic.InitializeDelegate" />
-    <serviceTask id="loadVCF" activiti:class="org.renci.binning.diagnostic.ncgenes.executor.LoadVCFDelegate" />
-    <serviceTask id="loadCoverage" activiti:class="org.renci.binning.diagnostic.ncgenes.executor.LoadCoverageDelegate" />
-    <serviceTask id="annotateVariants" activiti:class="org.renci.binning.diagnostic.ncgenes.executor.AnnotateVariantsDelegate" />
-    <serviceTask id="updateFrequencies" activiti:class="org.renci.binning.diagnostic.ncgenes.executor.UpdateFrequenciesDelegate" />
-    <serviceTask id="updateDiagnosticBins" activiti:class="org.renci.binning.diagnostic.ncgenes.executor.UpdateDiagnosticBinsDelegate" />
-    <serviceTask id="generateReport" activiti:class="org.renci.binning.diagnostic.ncgenes.executor.GenerateReportDelegate" />
-    <serviceTask id="finalize" activiti:class="org.renci.binning.core.diagnostic.FinalizeDelegate" />
+    <serviceTask id="initialize" activiti:class="org.renci.canvas.binning.core.diagnostic.InitializeDelegate" />
+    <serviceTask id="loadVCF" activiti:class="org.renci.canvas.binning.diagnostic.ncgenes.executor.LoadVCFDelegate" />
+    <serviceTask id="loadCoverage" activiti:class="org.renci.canvas.binning.diagnostic.ncgenes.executor.LoadCoverageDelegate" />
+    <serviceTask id="annotateVariants" activiti:class="org.renci.canvas.binning.diagnostic.ncgenes.executor.AnnotateVariantsDelegate" />
+    <serviceTask id="updateFrequencies" activiti:class="org.renci.canvas.binning.diagnostic.ncgenes.executor.UpdateFrequenciesDelegate" />
+    <serviceTask id="updateDiagnosticBins" activiti:class="org.renci.canvas.binning.diagnostic.ncgenes.executor.UpdateDiagnosticBinsDelegate" />
+    <serviceTask id="generateReport" activiti:class="org.renci.canvas.binning.diagnostic.ncgenes.executor.GenerateReportDelegate" />
+    <serviceTask id="finalize" activiti:class="org.renci.canvas.binning.core.diagnostic.FinalizeDelegate" />
     <endEvent id="end" />
 
     <sequenceFlow sourceRef="start" targetRef="initialize" />
