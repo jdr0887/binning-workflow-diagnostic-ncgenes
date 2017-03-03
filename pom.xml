@@ -8,7 +8,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.renci.canvas.binning</groupId>
   <artifactId>diagnostic-ncgenes-workflow</artifactId>
-  <version>0.0.20</version>
+  <version>0.0.21-SNAPSHOT</version>
   <packaging>pom</packaging>
   <properties>
     <maven.site.plugin.skip>false</maven.site.plugin.skip>    
@@ -28,19 +28,19 @@
     <url>https://github.com/jdr0887/binning-workflow-diagnostic-ncgenes</url>
     <developerConnection>scm:git:git@github.com:jdr0887/binning-workflow-diagnostic-ncgenes.git</developerConnection>
     <connection>scm:git:git@github.com:jdr0887/binning-workflow-diagnostic-ncgenes.git</connection>
-    <tag>diagnostic-ncgenes-workflow-0.0.20</tag>
+    <tag>HEAD</tag>
   </scm>      
   <dependencyManagement>
     <dependencies>
       <dependency>
 	<groupId>org.renci.canvas.binning.diagnostic-ncgenes-workflow</groupId>
 	<artifactId>diagnostic-ncgenes-workflow-commons</artifactId>
-	<version>0.0.20</version>
+	<version>0.0.21-SNAPSHOT</version>
       </dependency>
       <dependency>
 	<groupId>org.renci.canvas.binning.diagnostic-ncgenes-workflow</groupId>
 	<artifactId>diagnostic-ncgenes-workflow-executor</artifactId>
-	<version>0.0.20</version>
+	<version>0.0.21-SNAPSHOT</version>
       </dependency>      
     </dependencies>
   </dependencyManagement>  
