@@ -2,13 +2,13 @@
   <parent>
     <groupId>org.renci.canvas.binning</groupId>
     <artifactId>diagnostic-ncgenes-workflow</artifactId>
-    <version>0.0.17</version>
+    <version>0.0.18-SNAPSHOT</version>
   </parent>
   <name>CANVAS :: Binning :: Diagnostic NCGenes Workflow :: Web Service</name>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.renci.canvas.binning.diagnostic-ncgenes-workflow</groupId>
   <artifactId>diagnostic-ncgenes-workflow-ws</artifactId>
-  <version>0.0.17</version>
+  <version>0.0.18-SNAPSHOT</version>
   <packaging>bundle</packaging>
   <properties>
     <maven.site.plugin.skip>true</maven.site.plugin.skip>    
