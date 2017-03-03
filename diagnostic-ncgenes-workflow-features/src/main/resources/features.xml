@@ -1,10 +1,10 @@
 <features name="diagnostic-ncgenes-workflow-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0">
 
   <feature name="diagnostic-ncgenes-workflow" version="${project.version}" resolver="(obr)">
-    <bundle>mvn:org.renci.canvas.binning.workflows.diagnostic-ncgenes/diagnostic-ncgenes-commons/${project.version}</bundle>
-    <bundle>mvn:org.renci.canvas.binning.workflows.diagnostic-ncgenes/diagnostic-ncgenes-commands/${project.version}</bundle>    
-    <bundle>mvn:org.renci.canvas.binning.workflows.diagnostic-ncgenes/diagnostic-ncgenes-executor/${project.version}</bundle>
-    <bundle>mvn:org.renci.canvas.binning.workflows.diagnostic-ncgenes/diagnostic-ncgenes-ws/${project.version}</bundle>
+    <bundle>mvn:org.renci.canvas.binning.diagnostic-ncgenes-workflow/diagnostic-ncgenes-workflow-commons/${project.version}</bundle>
+    <bundle>mvn:org.renci.canvas.binning.diagnostic-ncgenes-workflow/diagnostic-ncgenes-workflow-commands/${project.version}</bundle>    
+    <bundle>mvn:org.renci.canvas.binning.diagnostic-ncgenes-workflow/diagnostic-ncgenes-workflow-executor/${project.version}</bundle>
+    <bundle>mvn:org.renci.canvas.binning.diagnostic-ncgenes-workflow/diagnostic-ncgenes-workflow-ws/${project.version}</bundle>
   </feature>
 
 </features>
