@@ -71,7 +71,7 @@ public class LoadVCFCallable extends AbstractLoadVCFCallable {
             Interval interval = new Interval(String.format("chr%s", locatedVariant.getGenomeRefSeq().getContig()),
                     locatedVariant.getPosition(), locatedVariant.getEndPosition());
             Interval loInterval = liftOver.liftOver(interval);
-            List<GenomeRefSeq> genomeRefSeqList = getDaoBean().getGenomeRefSeqDAO().findByRefIdAndContigAndSeqTypeAndAccessionPrefix(
+            List<GenomeRefSeq> genomeRefSeqList = getDaoBean().getGenomeRefSeqDAO().findByGenomeRefIdAndContigAndSeqTypeAndAccessionPrefix(
                     build38GenomeRef.getId(), locatedVariant.getGenomeRefSeq().getContig(), "Chromosome", "NC_");
 
             if (CollectionUtils.isEmpty(genomeRefSeqList)) {
